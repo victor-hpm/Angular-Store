@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ product.title | uppercase }} </mat-card-title>
+        <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="crop-image">
+        <img [src]="product.image" alt="">
+    </div>
+    <mat-card-content>
+        <p>{{ product.description | slice:0:10 }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-raised-button [routerLink]="['/products', product.id]">Ver detalle</a>
+        <!-- input click  -->
+        <button (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>
+        <!-- encerramos routerLink en [] y le vamos aa pasar un array
+            para pasar el link de forma mas limpia
+            ['dfsdfd',dfdsf] concatenara las dos y  formara una url de forma mas limpia -->
+    </mat-card-actions>
+</mat-card>
+
+<!-- 
+<h3 appHighlight>{{ product.title | uppercase }}</h3>
+<strong>{{ product.price | currency }}</strong>
+<p>{{ product.description | slice:0:10 }}</p>
+<p>{{ today | date:'HH:mm' }}</p> -->
