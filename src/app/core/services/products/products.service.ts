@@ -73,6 +73,7 @@ export class ProductsService {
     // metodo en el que obtiene todos los productos
     // return this.products;  cambiamos la peticion a http
     return this.http.get<Product[]>(`${environment.url_api}/products`);
+    // get es para solicitar informacion, para hacer lectura de informacion
     // con esto angular obtendra datos que esto retorne y me lo manipulara como uj objeto json
     // <Product[]> estamos tipando diciedo que es de<Product[]> tipo Object y es un array
   }

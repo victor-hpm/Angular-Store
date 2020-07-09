@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  url_api: 'http://platzi-store.herokuapp.com'
+  url_api: 'https://platzi-store.herokuapp.com'
 };
+//  e importarmos en products services
 
 /*
  * For easier debugging in development mode, you can import the following file

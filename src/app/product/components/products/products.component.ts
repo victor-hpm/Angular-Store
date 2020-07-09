@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Product } from './../../../core/models/product.model';
 // http client
+// como una inyeccion de dependencias
 import { ProductsService } from './../../../core/services/products/products.service';
 @Component({
   selector: 'app-products',
@@ -67,7 +68,7 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // llamamos al metodo fecthProducts para que e ejecute en consola
+    // llamamos al metodo fecthProducts para que e ejecute y poder verlo en consola
     this.fecthProducts();
   }
    // metodo para leer en el componente padre y que lo lee en app.component.html
@@ -76,7 +77,7 @@ export class ProductsComponent implements OnInit {
     console.log(id);
   }
 
-  // cresmos metodo para ocupar la variable products que usamos en el html y que los traiga desde el  http client
+  // creamos metodo para ocupar la variable products que usamos en el html y que los traiga desde el  http client
   fecthProducts() {
     // hacemos refrencia a this.productsService. llamamos al metodo getAllProducts() de products.service.ts
     this.productsService.getAllProducts()
