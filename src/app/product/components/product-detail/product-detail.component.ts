@@ -59,6 +59,7 @@ export class ProductDetailComponent implements OnInit {
       price: 3000,
       description: 'new product'
     };
+    // toda esta informacion la ocupara en el this.productsService
     this.productsService.createProduct(newProduct)
     .subscribe(product => {
       // obtenemos el producto creado
@@ -69,6 +70,8 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  // se crea el metodo para actualizar un producto
+  // y se manda a llamar en el product-detal.html
   updateProduct() {
     const updateProduct: Partial<Product> = {
       price: 555555,
@@ -80,6 +83,8 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  // creando metodo para eliminar un producto
+  // rta es la respuesta
   deleteProduct() {
     this.productsService.deleteProduct('222')
     .subscribe(rta => {

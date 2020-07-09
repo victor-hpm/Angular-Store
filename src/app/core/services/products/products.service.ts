@@ -65,7 +65,7 @@ export class ProductsService {
   // ];
 
   constructor(
-    // inyectamos dependencia para http client
+    // inyectamos dependencia para http client (web aservice con una restAPI)
     private http: HttpClient
   ) { }
 
@@ -88,7 +88,7 @@ export class ProductsService {
     // <Product[]> estamos tipando diciedo que es de<Product> tipo Object y que es un solo producto no una lista
   }
 
-  // poust y (product: Product) esta mos tipando
+  // post es para crear y (product: Product) esta mos tipando
   createProduct(product: Product) {
     return this.http.post(`${environment.url_api}/products`, product);
     // cada ves que llamemos a este metodo sera la creacion de un producto, de cuerpo , product
@@ -96,10 +96,15 @@ export class ProductsService {
     // la ejecucion del metodo estara en el detail.html
   }
 
+  // para hacer una actualizacion necesitamos saber el id del elemto a editar
+  // Partial<Product> una parte de ese modelo interfaz lo que yo quiero cambiar
+  // ahora nos vamos al product-detail.component.ts para crear el metodo
   updateProduct(id: string, changes: Partial<Product>) {
     return this.http.put(`${environment.url_api}/products/${id}`, changes );
   }
 
+  // comonectar metodo para eliminar todos los metodos de los crud se platenan aqui
+  // necesitamos en id
   deleteProduct(id: string) {
     return this.http.delete(`${environment.url_api}/products/${id}`);
   }
