@@ -23,6 +23,17 @@
                     <mat-form-field>
                         <input formControlName="price" matInput type="number" placeholder="Price">
                     </mat-form-field>
+                    <!-- 6 etos mensajes se mostraran si hay errores en el precio y si esta sucio (que el usuario ya escribio) -->
+                    <!--  7 <div *ngIf="form.get('price').errors && form.get('price').dirty"> -->
+                    <div *ngIf="priceField.errors && priceField.dirty">
+                        <!-- 5 para ver si tiene un error tenemos que entrar en la instancia de nuestro formControl y en price  -->
+                        <!-- 5 este mensaje si error es de tipo price_invalid -->
+                        <!-- 7 <p *ngIf="form.get('price').hasError('price_invalid')">Invalid Price, must be less than 10000 </p> -->
+                        <p *ngIf="priceField.hasError('price_invalid')">Invalid Price, must be less than 10000 </p>
+                        <!-- 5 este mensaje si error es de tipo required -->
+                        <p *ngIf="priceField.hasError('required')">required camp</p>
+                        <!-- 7 <p *ngIf="form.get('price').hasError('required')">required camp</p> -->
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -34,8 +45,9 @@
             </div>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-mat-raised-button type="submit">Save</button>
-            <!-- creamos el metodos en el ts para guardar el producto -->
+            <!-- 5 [disabled]="form.invalid" desabilita si el formulario es invalido -->
+            <button [disabled]="form.invalid" mat-mat-raised-button type="submit">Save</button>
+            <!-- 1 creamos el metodos en el ts para guardar el producto -->
         </mat-card-actions>
     </mat-card>
 </form>

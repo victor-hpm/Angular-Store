@@ -1,4 +1,3 @@
-import { Product } from './../../../core/models/product.model';
 import { Component, OnInit } from '@angular/core';
 
 // 1necesitamos importar de angularForms
@@ -15,8 +14,10 @@ import { Router } from '@angular/router';
 // 3y lo agregaba a nuestra api ,el cual esta el el core lo importamos
 // 3de esta menera creamos un prodcuro que se esta recogiendo en el formulario
 import { ProductsService } from './../../../core/services/products/products.service';
-import { Route } from '@angular/compiler/src/core';
 // 3lo anexamos como una inyeccion de dependencias en el contructor como privado
+
+// 5 importamos myvalidators con el nombre de mi clase para utilizarlo
+import { MyValidators } from './../../../utils/myvalidators';
 
 
 
@@ -53,7 +54,9 @@ export class FormProductComponent implements OnInit {
       // lo que necesitamos
       id: ['', [Validators.required]],
       title: ['', [Validators.required]],
-      price: ['', [Validators.required]],
+      // 5 ahora si podemos utilizar nuestra nueva malidacion
+      // 5 para ver el error de esta validacion lo imprimimos en el html con un parrafo
+      price: ['', [Validators.required, MyValidators.isProceValid]],
       image: [''],
       description: ['', [Validators.required]],
     });
@@ -64,11 +67,12 @@ export class FormProductComponent implements OnInit {
 
 
 
-  // 1metodo para guardar el procucto
+  // 1 metodo para guardar el procucto
   saveProduct(event: Event) {
     // 1event: Event cancelamos el atash del evento
     // 1aqui se le dice que evite su comportamiento por defecto que es enviar y recargar
     // 1ahora con esto hara el comportamiento que le digamos
+    // 1 buena practica
     event.preventDefault();
     // 3 utilizanco el ProductsService para agregar el nuevo producto desde admin
     // 3hacemos una pregunta para ver si ese formulario es valido
@@ -95,4 +99,11 @@ export class FormProductComponent implements OnInit {
     // 1$event para evitar renderizaciones incorrectas ya que un
     // 1formulario va a intentar por defecto enviar el contenido y recargar la pagina
   }
+
+  // 7 para no repetir tanto form.get('price'), y lo cambiamos en el html por el priceField como variable
+  // estos son metodos getes y setes nativos de de JS y TS
+  get priceField() {
+    return this.form.get('price');
+  }
+
 }
