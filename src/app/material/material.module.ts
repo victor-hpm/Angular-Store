@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// material module desde la documentacion lo importamos y exportamos
+// material module desde la documentacion, lo importamos y exportamos
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +19,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -44,7 +45,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatGridListModule,
     MatMenuModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule
   ],
   exports: [
     LayoutModule,
@@ -62,7 +64,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatGridListModule,
     MatMenuModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule
+
   ]
 })
 export class MaterialModule { }
