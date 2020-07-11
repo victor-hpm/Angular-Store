@@ -6,6 +6,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TableComponent } from './components/table/table.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { FormProductComponent } from './components/form-product/form-product.component';
 
 const routes: Routes = [
   // creamos la ruta para que podamos acceder a este admin
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductsListComponent
+      },
+      {
+        path: 'products/create',
+        component: FormProductComponent
       },
     ]
   }
