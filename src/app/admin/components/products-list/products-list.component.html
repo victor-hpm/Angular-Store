@@ -24,7 +24,9 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let product">
-            <button mat-button> Edit </button>
+            <!-- 9.4 cambiamos el boton de edit y lo redirigimos a product-edit con ['la pagina(edit)', el id que seria product.id]  
+            9.4 tenemos que agregarlo como ruta en el routing-->
+            <a mat-raised-button [routerLink]="['edit', product.id]"> Edit </a>
             <button mat-raised-button color="warn" (click)="deleteProduct(product.id)"> Delete </button>
         </td>
     </ng-container>
