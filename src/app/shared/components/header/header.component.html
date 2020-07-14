@@ -1,21 +1,22 @@
 <mat-toolbar class="header-toolbar" color="primary">
-  <mat-toolbar-row>
-    <div class="container">
-      <div class="row between-xs middle-xs header-row">
-        <nav>
-          <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
-          <a mat-button routerLink="/products" routerLinkActive="active"
-            >Products</a
+    <mat-toolbar-row>
+        <div class="container">
+            <div class="row between-xs middle-xs header-row">
+                <nav>
+                    <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+                    <a mat-button routerLink="/products" routerLinkActive="active">Products</a
           >
           <a mat-button routerLink="/contact" routerLinkActive="active"
             >Contact</a
           >
         </nav>
-        <a mat-raised-button matBadge="4" matBadgeColor="warn">
+        <!-- 2.1 de product.component para que el boon cambie de numeros -->
+        <!-- 2.1 tambien lo importamos en ts y en el constructor del heder -->
+        <a mat-raised-button [matBadge]="total" matBadgeColor="warn">
           <mat-icon>shopping_cart</mat-icon>
           Carrito
         </a>
-      </div>
-    </div>
-  </mat-toolbar-row>
+            </div>
+        </div>
+    </mat-toolbar-row>
 </mat-toolbar>

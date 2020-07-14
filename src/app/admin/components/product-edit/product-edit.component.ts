@@ -50,7 +50,7 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
     // 8 obetenemos el Id, tipamos params
-    this.activatedRoute.params.subscribe((paramas: Params) =>{
+    this.activatedRoute.params.subscribe((paramas: Params) => {
       // 8 resivimos el ID
       // 9.2 lo cambiamos const id = paramas.id; el cambio fue de una constante a variable publica
       this.id = paramas.id;
