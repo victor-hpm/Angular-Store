@@ -6,7 +6,8 @@ import { CartService } from './../../../core/services/cart.service';
 
 // 4.1 imprtamos map para transformar y para utilizar el pipe en el carrito
 import { map } from 'rxjs/operators';
-import { pipe } from 'rxjs';
+// 5 traemos el observable
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,8 @@ import { pipe } from 'rxjs';
 export class HeaderComponent implements OnInit {
 
   // 3 cracion de variable total que inicialice en 0
-  total = 0;
+  // 5 sin subscripcion y con un Observablebale
+  total$: Observable<number>;
 
   constructor(
      // 2.1
@@ -38,24 +40,28 @@ export class HeaderComponent implements OnInit {
     //   //
       // 4 ahora lo haremos con pipe ya que los flujos de datos se pueden preprocesar con un pipe
       // 4.2
-    this.cartService.cart$
-    // agregamos la instruccion pipe
+
+      // 5 ahora le decimo que total es un observable
+      this.total$ = this.cartService.cart$
+      // 5 ya no nos subscribimos estamos guardando el valor
+      // 5 y ese valor es un observable funge de datos que va a estar vivo
+
+      // 5 y ahora nos subcribiremos pero desde el template html  con [matBadge]="total$ | async"
+      // 5 agregamos la instruccion pipe
     .pipe(
       // agregamos el pipe map
       // (products => y va a obtener los productos
       // => products.length) y aqui sentencio como los va a transformar
       // map(products => products.length) es una lista de productos y lo quiero transformar
       //  a un solo valor el cual es el tamaño de esa lista
-      map(products => products.length)
-    )
-    // al colocar este valos en el subscibe ya no nos va a llegar la lista si no el tamaño entonces nos llega el total llega transfomado
-    .subscribe(total => {
-      // llega transformado
-      this.total = total;
-    });
-  }
+        map(products => products.length)
+      );
+    }
+
 
   ngOnInit() {
   }
 
 }
+
+

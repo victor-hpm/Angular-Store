@@ -12,7 +12,8 @@
         </nav>
         <!-- 2.1 de product.component para que el boon cambie de numeros -->
         <!-- 2.1 tambien lo importamos en ts y en el constructor del heder -->
-        <a mat-raised-button [matBadge]="total" matBadgeColor="warn">
+        <!-- 6 [matBadge]="total$ | async" automaticamne hace la subscripsion y cuando no se ocupe se desencribirse -->
+        <a mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn">
           <mat-icon>shopping_cart</mat-icon>
           Carrito
         </a>
